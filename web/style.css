@@ -4,117 +4,500 @@
   padding: 0;
 }
 
+
 body {
   min-height: 100vh;
+
   font-family: Arial, sans-serif;
+
   background: #050505;
+
   color: white;
 }
 
+
 .app {
   min-height: 100vh;
+
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 32px 20px;
+
+  padding: 30px 24px;
 }
 
+
+/* =================================
+   HEADER
+================================= */
+
+.header {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+}
+
+
 .logo {
-  font-size: 28px;
+  font-size: 27px;
+
   font-weight: 700;
+
   letter-spacing: -1px;
 }
 
+
 .status {
-  margin-top: 14px;
-  padding: 7px 16px;
+  padding: 7px 15px;
+
   border: 1px solid #333;
+
   border-radius: 20px;
+
   font-size: 13px;
-  color: #aaa;
+
+  color: #999;
+
+  background: #0b0b0b;
 }
+
+
+/* =================================
+   HERO
+================================= */
 
 .hero {
   width: 100%;
-  max-width: 650px;
+
+  max-width: 720px;
 
   flex: 1;
 
+  margin: auto;
+
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
+
   justify-content: center;
 
   text-align: center;
 }
 
-.orb {
-  width: 150px;
-  height: 150px;
 
-  border-radius: 50%;
+/* =================================
+   ORB
+================================= */
+
+.orb {
+  position: relative;
+
+  width: 165px;
+  height: 165px;
+
+  margin-bottom: 35px;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
-  background: #111;
-  border: 1px solid #333;
+  border-radius: 50%;
 
-  margin-bottom: 35px;
+  background: #101010;
+
+  border: 1px solid #292929;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
+
 
 .mic {
-  font-size: 55px;
+  position: relative;
+
+  z-index: 2;
+
+  font-size: 54px;
 }
+
+
+.orb-ring {
+  position: absolute;
+
+  inset: -10px;
+
+  border-radius: 50%;
+
+  border: 1px solid #222;
+}
+
+
+/* =================================
+   ORB STATES
+================================= */
+
+.orb.listening {
+  animation: pulse 2s infinite;
+}
+
+
+.orb.speaking {
+  animation: pulse 1s infinite;
+}
+
+
+.orb.interrupted {
+  animation: interruption 0.45s ease;
+}
+
+
+.orb.recovering {
+  animation: recover 1s infinite;
+}
+
+
+@keyframes pulse {
+
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.045);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+
+}
+
+
+@keyframes interruption {
+
+  0% {
+    transform: scale(1);
+  }
+
+  40% {
+    transform: scale(0.9);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+
+}
+
+
+@keyframes recover {
+
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.06);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+
+}
+
+
+/* =================================
+   HEADINGS
+================================= */
 
 h1 {
   font-size: 42px;
+
   margin-bottom: 12px;
+
+  letter-spacing: -1px;
 }
+
 
 .subtitle {
   color: #888;
+
   font-size: 17px;
 }
 
-.transcript {
+
+/* =================================
+   CONVERSATION
+================================= */
+
+.conversation {
   width: 100%;
-  min-height: 70px;
 
-  margin-top: 45px;
-  padding: 22px;
+  margin-top: 40px;
 
-  border: 1px solid #292929;
-  border-radius: 14px;
+  border: 1px solid #252525;
 
-  color: #aaa;
+  border-radius: 16px;
+
   background: #0b0b0b;
+
+  overflow: hidden;
 }
 
-button {
-  margin-top: 25px;
 
-  padding: 15px 32px;
+.conversation-header {
+  padding: 14px 18px;
+
+  border-bottom: 1px solid #1f1f1f;
+
+  color: #555;
+
+  font-size: 11px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 1px;
+
+  text-align: left;
+}
+
+
+.messages {
+  min-height: 130px;
+
+  max-height: 260px;
+
+  padding: 18px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 14px;
+
+  overflow-y: auto;
+
+  text-align: left;
+}
+
+
+.empty-message {
+  color: #666;
+
+  font-size: 14px;
+
+  padding: 20px 0;
+
+  text-align: center;
+}
+
+
+/* =================================
+   MESSAGE
+================================= */
+
+.message {
+  max-width: 85%;
+
+  padding: 12px 15px;
+
+  border-radius: 12px;
+
+  line-height: 1.45;
+
+  font-size: 14px;
+}
+
+
+.message-label {
+  margin-bottom: 5px;
+
+  font-size: 10px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 1px;
+
+  color: #555;
+}
+
+
+.message-text {
+  color: #ccc;
+}
+
+
+.message.user {
+  align-self: flex-end;
+
+  background: #161616;
+
+  border: 1px solid #292929;
+}
+
+
+.message.agent {
+  align-self: flex-start;
+
+  background: #111;
+
+  border: 1px solid #222;
+}
+
+
+.message.interim {
+  opacity: 0.65;
+}
+
+
+/* =================================
+   INTERRUPTION
+================================= */
+
+.interruption-message {
+  align-self: center;
+
+  padding: 6px 12px;
+
+  border: 1px solid #292929;
+
+  border-radius: 20px;
+
+  color: #777;
+
+  font-size: 11px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.8px;
+}
+
+
+/* =================================
+   ACTIVITY
+================================= */
+
+.activity {
+  margin-top: 16px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  font-size: 13px;
+
+  color: #777;
+}
+
+
+.activity-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #555;
+}
+
+
+/* =================================
+   BUTTON
+================================= */
+
+button {
+  margin-top: 24px;
+
+  padding: 15px 34px;
 
   border: none;
+
   border-radius: 30px;
 
   background: white;
+
   color: black;
 
   font-size: 16px;
+
   font-weight: 600;
 
   cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
+
 
 button:hover {
   opacity: 0.85;
+
+  transform: translateY(-1px);
 }
 
+
+button:disabled {
+  cursor: not-allowed;
+
+  opacity: 0.5;
+
+  transform: none;
+}
+
+
+/* =================================
+   FOOTER
+================================= */
+
 .footer {
-  color: #555;
-  font-size: 13px;
+  text-align: center;
+
+  color: #444;
+
+  font-size: 12px;
+
   margin-top: 20px;
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 600px) {
+
+  .app {
+    padding: 22px 16px;
+  }
+
+
+  h1 {
+    font-size: 32px;
+  }
+
+
+  .subtitle {
+    font-size: 15px;
+  }
+
+
+  .orb {
+    width: 140px;
+    height: 140px;
+  }
+
+
+  .message {
+    max-width: 92%;
+  }
+
 }

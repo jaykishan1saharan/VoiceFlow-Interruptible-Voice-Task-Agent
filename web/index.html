@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
 
   <title>VoiceFlow</title>
 
@@ -13,41 +17,103 @@
 
   <main class="app">
 
-    <div class="logo">VoiceFlow</div>
+    <!-- HEADER -->
+    <header class="header">
 
-    <div class="status" id="status">
-      Ready
-    </div>
-
-    <section class="hero">
-
-      <div class="orb">
-        <div class="mic">🎙️</div>
+      <div class="logo">
+        VoiceFlow
       </div>
 
-      <h1>Your Voice Assistant</h1>
+      <div class="status" id="status">
+        Ready
+      </div>
 
-      <p class="subtitle">
+    </header>
+
+
+    <!-- MAIN -->
+    <section class="hero">
+
+      <!-- VOICE ORB -->
+      <div class="orb" id="orb">
+
+        <div class="orb-ring"></div>
+
+        <div class="mic">
+          🎙️
+        </div>
+
+      </div>
+
+
+      <h1 id="title">
+        Your Voice Assistant
+      </h1>
+
+      <p class="subtitle" id="subtitle">
         Speak naturally. Interrupt anytime.
       </p>
 
-      <div class="transcript" id="transcript">
-        Say something to get started...
+
+      <!-- CONVERSATION -->
+      <section
+        class="conversation"
+        id="conversation"
+      >
+
+        <div class="conversation-header">
+          Conversation
+        </div>
+
+        <div
+          class="messages"
+          id="messages"
+        >
+
+          <div class="empty-message">
+            Say something to get started...
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ACTIVITY -->
+      <div
+        class="activity"
+        id="activity"
+      >
+
+        <span class="activity-dot"></span>
+
+        <span id="activityText">
+          VoiceFlow is ready
+        </span>
+
       </div>
 
+
+      <!-- BUTTON -->
       <button id="startButton">
         Start Voice
       </button>
 
     </section>
 
-    <div class="footer">
+
+    <!-- FOOTER -->
+    <footer class="footer">
       Powered by LiveKit + Rime
-    </div>
+    </footer>
 
   </main>
 
-  <script type="module" src="app.js"></script>
+
+  <script
+    type="module"
+    src="app.js"
+  ></script>
 
 </body>
 </html>
