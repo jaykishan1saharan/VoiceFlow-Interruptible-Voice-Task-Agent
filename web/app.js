@@ -671,7 +671,7 @@ startButton.addEventListener(
 
       const response =
         await fetch(
-          "/token",
+          "/api/token",
         );
 
 
